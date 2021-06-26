@@ -15,7 +15,7 @@ export default function App() {
         <div className="row">
           <div className="col bg-primary m-1">
             <h2>Синхронные посты</h2>
-            <Posts posts={[]} />
+            <Posts />
           </div>
           <div className="col bg-warning m-1">
             <h2>Асинхронные посты</h2>

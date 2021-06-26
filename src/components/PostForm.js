@@ -10,9 +10,24 @@ export default class PostForm extends React.Component {
   }
   submitHandler = (event) => {
     event.preventDefault();
+    const { title } = this.state;
+
+    const newPost = {
+      title,
+      id: Date.now().toString()
+    };
+    console.log("newPost", newPost);
+    this.setState({ title: "" });
   };
   changeInputHandler = (event) => {
-    console.log(event);
+    //console.log("state", this.state);
+    event.persist();
+    this.setState((prev) => ({
+      ...prev,
+      ...{
+        [event.target.name]: event.target.value
+      }
+    }));
   };
   render() {
     return (
@@ -23,6 +38,7 @@ export default class PostForm extends React.Component {
             type="text"
             className="form-control"
             id="title"
+            name="title"
             value={this.state.title}
             onChange={this.changeInputHandler}
           />
